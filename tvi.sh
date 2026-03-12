@@ -20,7 +20,7 @@ hex2dec(){ printf '%d' "0x$1";}
 invclr(){ printf '%02x%02x%02x' $((255-$(hex2dec ${1:0:2}))) $((255-$(hex2dec ${1:2:2}))) $((255-$(hex2dec ${1:4:2})));}
 
 # Check deps
-for c in ffmpeg ffprobe mpv socat;do have "$c"||die "Missing: $c";done
+for c in ffmpeg ffprobe mpv socat awk od realpath head grep setsid gimp audacity eog nano;do have "$c"||die "Missing: $c";done
 
 # Probe: duration|fps|hasaudio|width,height|rotation
 probe(){ 
