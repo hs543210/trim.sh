@@ -22,6 +22,9 @@ invclr(){ printf '%02x%02x%02x' $((255-$(hex2dec ${1:0:2}))) $((255-$(hex2dec ${
 # Check deps
 for c in ffmpeg ffprobe mpv socat awk od realpath head grep setsid gimp audacity eog nano;do have "$c"||die "Missing: $c";done
 
+# Usage
+[[ "${1:-}" =~ ^(-h|--help)$ ]]&&die "Usage: ${0##*/} [--thumb] video.mp4"
+
 # Probe: duration|fps|hasaudio|width,height|rotation
 probe(){ 
     local dur fps has_audio width height rot
